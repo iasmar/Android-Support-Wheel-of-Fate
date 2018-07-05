@@ -54,7 +54,7 @@ This project have 3 types of test:
    - [androidTest](https://github.com/iasmar/Android-Support-Wheel-of-Fate/tree/master/app/src/test) Unit tests.
 
 ## Running the tests
-
+run option in Android Studio, or run directly from the command line if you prefer.
 
 ## Algorithm code flow...
  -  [View full image size](https://raw.githubusercontent.com/iasmar/Android-Support-Wheel-of-Fate/master/algorithm_code_flow/algorithm_code_flow.png)
