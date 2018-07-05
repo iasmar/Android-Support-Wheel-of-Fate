@@ -2,7 +2,10 @@
 
 This is an app that should repeat selecting two engineers at random to both complete a half day of support (shift) each to ultimately generate a schedule that shows whose turn is it to support the business.
 
-Screenshots
+## Documentation
+ - Visit [index](http://htmlpreview.github.io/?https://github.com/iasmar/Android-Support-Wheel-of-Fate/blob/master/documentation/index.html)
+ 
+## Screenshots
 -------------
  <img src="screenshots/engineers_page.png" height="400" alt="Screenshot"/> <img src="screenshots/schedule_page.png" height="400" alt="Screenshot"/>
  
@@ -15,21 +18,21 @@ git clone https://github.com/iasmar/Android-Support-Wheel-of-Fate.git
 Use the Android Studio *Build Variants* button to choose between **prod** and **qualityAssurance** and **mock** flavors combined with debug and release build types
 
 
-### Building using Android Studio...
+## Building using Android Studio...
 
 1. Open Android Studio and launch the Android SDK manager from it (Tools | Android | SDK Manager)
 1. Select *Open an existing Android Studio project*
 1. Select the **Android-Support-Wheel-of-Fate** directory.
 1. Select the **Build variant** (mockDebug, mockQualityAssurance, prodDebug, prodQualityAssurance, prodRelease).
 
-### Building
+## Building
 To build the samples after you have applied the changes above, you can use the build/run option in Android Studio, or build directly from the command line if you prefer.
 
  ## Built With
 
 * [Gradle](https://guides.gradle.org/building-android-apps/)
 
-### Configuration
+## Configuration
  - Use [gradle.properties](https://github.com/iasmar/Android-Support-Wheel-of-Fate/blob/master/gradle.properties) to modify the current configration.
 
 ```
@@ -39,22 +42,22 @@ Example
       - productionServer=https://private-8c8ff7-astortest.apiary-mock.com/astro/
 ```
 
-### Tests
+## Tests
 This project have 3 types of test:
  - [androidTest](https://github.com/iasmar/Android-Support-Wheel-of-Fate/tree/master/app/src/androidTest) Unit tests that involves android instrumentation **Real data**.
   - [androidTestMock](https://github.com/iasmar/Android-Support-Wheel-of-Fate/tree/master/app/src/androidTestMock) Unit tests that involves android instrumentation **Mock data**.
    - [androidTest](https://github.com/iasmar/Android-Support-Wheel-of-Fate/tree/master/app/src/test) Unit tests.
 
-### Running the tests
+## Running the tests
 
 
-### Algorithm code flow...
+## Algorithm code flow...
  -  [View full image size](https://raw.githubusercontent.com/iasmar/Android-Support-Wheel-of-Fate/master/algorithm_code_flow/algorithm_code_flow.png)
  - [View pdf](https://github.com/iasmar/Android-Support-Wheel-of-Fate/blob/master/algorithm_code_flow/algorithm_code_flow.pdf)
 -------------
  <img src="algorithm_code_flow/algorithm_code_flow.png" height="800" alt="Screenshot"/>
  
-### Todos
+## Todos
 
 - Write MORE Tests
 - Write MORE Tests
