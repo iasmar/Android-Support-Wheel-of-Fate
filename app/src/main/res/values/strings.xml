@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Rome</string>
+
+
+
+
+    <string name="engineers">Engineers</string>
+
+
+
+    //desc
+    <string name="engineer_images_des">engineer images</string>
+
+
+    <!--App Message-->
+    <string name="error_api_service_unavailable">Service unavailable please try again later! \t Swipe down to retry</string>
+    <string name="error_api_default">Something wrong happened! \t Swipe down to retry</string>
+    <string name="connection_error">Internet connection lost! \t Swipe down to retry</string>
+    <string name="error_default">Some error occurred! \t Swipe down to refresh</string>
+    <string name="error_schedule_general">An error occurred while generating the schedule.</string>
+    <string name="error_schedule_invalid">Base on the given setting we can not create the schedule.</string>
+
+    <string name="generate_next_shift">Generate next shift</string>
+
+
+    <!-- Strings related to login -->
+
+
+    <string name="schedule">Schedule</string>
+    <string name="day_shift">Day Shift</string>
+    <string name="night_shift">Night Shift</string>
+    <string name="day">Day</string>
+    <string name="no_data_found">No data found</string>
+
+
+</resources>

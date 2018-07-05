@@ -1,0 +1,15 @@
+<resources>
+
+    <dimen name="divider_height">1dp</dimen>
+
+    <!-- Text sizes. -->
+
+
+    <!--margin and padding-->
+    <dimen name="margin_small">8dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines (margin_medium). -->
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+
+
+</resources>

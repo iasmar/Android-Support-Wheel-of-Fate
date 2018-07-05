@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<resources>
+    <!--Main Colors-->
+    <color name="primary">#ff9800</color>
+    <color name="primary_light">#ffc947</color>
+    <color name="primary_dark">#c66900</color>
+    <color name="secondary">#009688</color>
+
+
+    <color name="background">#FFFFFF</color>
+    <color name="white">#FFFFFF</color>
+
+
+    <color name="divider">#AAA</color>
+
+
+    <color name="disabled_and_hint_text">#61000000</color>
+
+</resources>

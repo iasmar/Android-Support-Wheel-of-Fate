@@ -1,0 +1,23 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="BaseApp" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/secondary</item>
+        <!--<item name="colorControlHighlight">@color/secondary_dark</item>-->
+
+    </style>
+
+    <!-- Splash Screen theme. -->
+    <style name="SplashScreen" parent="BaseApp">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
+
+    <!-- divider theme. -->
+    <style name="Divider" parent="BaseApp">
+        <item name="android:background">@color/divider</item>
+    </style>
+
+
+</resources>

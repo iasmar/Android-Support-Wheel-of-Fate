@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/frg_schedules_header"
+        android:layout_width="match_parent"
+        android:background="@color/primary_light"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_small">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.Medium"
+            android:text="@string/day" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textAppearance="@style/TextAppearance.Medium"
+            android:text="@string/day_shift" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.Medium"
+            android:text="@string/night_shift" />
+
+    </LinearLayout>
+
+
+
+
+    <com.iasmar.rome.ui.views.custom.recyclerview.CustomSwipeRefreshLayout
+        android:id="@+id/frg_schedules_swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/frg_schedules_header"
+        android:background="@color/background">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/frg_schedules_recv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:theme="@style/RecyclerView.Schedules" />
+    </com.iasmar.rome.ui.views.custom.recyclerview.CustomSwipeRefreshLayout>
+
+    <LinearLayout
+        android:id="@+id/frg_schedules_view_message_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <include layout="@layout/view_message" />
+    </LinearLayout>
+    </RelativeLayout>
+
+

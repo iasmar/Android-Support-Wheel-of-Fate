@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base RecyclerView theme. -->
+    <style name="BaseRecyclerView" parent="BaseApp">
+        <item name="android:clipToPadding">false</item>
+    </style>
+
+    <!-- Engineers RecyclerView theme. -->
+    <style name="RecyclerView.Engineers" parent="BaseRecyclerView"/>
+    <!-- Engineers RecyclerView theme. -->
+    <style name="RecyclerView.Schedules" parent="BaseRecyclerView"/>
+
+</resources>
