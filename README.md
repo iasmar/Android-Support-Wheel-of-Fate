@@ -2,6 +2,11 @@
 
 This is an app that should repeat selecting two engineers at random to both complete a half day of support (shift) each to ultimately generate a schedule that shows whose turn is it to support the business.
 
+## APK
+This apk with the build type (prod-debug)
+ - Download [apk](https://drive.google.com/file/d/1wHfKtFmFc-RXDTg-bOAv8zGtYFKvC2A2/view?usp=sharing)
+
+
 ## Documentation
  - Visit [index](http://htmlpreview.github.io/?https://github.com/iasmar/Android-Support-Wheel-of-Fate/blob/master/documentation/index.html)
  
