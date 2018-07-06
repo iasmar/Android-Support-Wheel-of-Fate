@@ -41,6 +41,9 @@ public class ScheduleService {
     @VisibleForTesting
     HashMap<String, Engineer> copyOfEngineers = new LinkedHashMap<>();
 
+    // engineers with how many shifts they have
+    HashMap<Integer, List<Engineer>> shifts = new LinkedHashMap<>();
+
     // Track of total shifts for each engineer.
     private HashMap<String, Integer> engineerTotalShifts = new LinkedHashMap<>();
 
@@ -49,7 +52,7 @@ public class ScheduleService {
     // Rule 3: An engineer cannot have more than one shift on any consecutive days
     // ENGINEER_OFF_DAYS
     @VisibleForTesting
-    List<String> engineerResting = new ArrayList<>();
+    List<Engineer> engineerResting = new ArrayList<>();
 
     // Rule 4: Each engineer should have completed 2 shifts of support in any 2 week period.
     // MAX_SHIFTS_PER_ENGINEER
@@ -72,6 +75,8 @@ public class ScheduleService {
                 copyOfEngineers.put(engineer.getId(), engineer);
                 engineerTotalShifts.put(engineer.getId(), 0);
             }
+            shifts.put(0, new ArrayList(engineers));
+
         }
 
 
@@ -84,7 +89,7 @@ public class ScheduleService {
      * @return a list of schedules.
      * @throws ScheduleException if there is an engineer did not take MAX_SHIFTS_PER_ENGINEER.
      */
-    public List<Schedule> getSchedules(){
+    public List<Schedule> getSchedules() {
         if (engineers == null || engineers.size() == 0) {
             return null;
         }
@@ -123,16 +128,35 @@ public class ScheduleService {
         for (int j = 0; j < MAX_SHIFTS_PER_DAY; j++) {
 
             Engineer pickedEngineer = getRandomEngineer();
-            int engTotalShifts = engineerTotalShifts.get(pickedEngineer.getId()) + 1;
-            engineerTotalShifts.put(pickedEngineer.getId(), engTotalShifts);
+            int engTotalShifts = engineerTotalShifts.get(pickedEngineer.getId());
+            List<Engineer> engineersWithShifts = shifts.get(engTotalShifts);
+
+            if (engineersWithShifts != null) {
+
+                engineersWithShifts.remove(pickedEngineer);
+                shifts.put(engTotalShifts, engineersWithShifts);
+            }
+
+            int engNewTotalShifts = engTotalShifts + 1;
+            engineerTotalShifts.put(pickedEngineer.getId(), engNewTotalShifts);
+
+             engineersWithShifts = shifts.get(engNewTotalShifts);
+            if (engineersWithShifts == null) {
+                engineersWithShifts = new ArrayList<>();
+            }
+
+            engineersWithShifts.add(pickedEngineer);
+            shifts.put(engNewTotalShifts, engineersWithShifts);
+
+
             shiftEngineers.add(pickedEngineer);
             takenShits++;
 
             // remove engineer so that the engineer will not enter the pool.
-            engineers.remove(pickedEngineer);
+            this.engineers.remove(pickedEngineer);
             //  Rule 2: no more that one shift per day
             //  Rule 3: engineer off days.
-            engineerResting.add(pickedEngineer.getId());
+            engineerResting.add(pickedEngineer);
 
 
             // Rule 4: Each engineer should have completed shifts in the given period.
@@ -161,9 +185,8 @@ public class ScheduleService {
         if ((currentDay > ENGINEER_OFF_DAYS && currentShift == MAX_SHIFTS_PER_DAY - 1) || engineerResting.size() == MAX_SHIFTS_PER_DAY * (ENGINEER_OFF_DAYS + 1)) {
             for (int j = 0; j < MAX_SHIFTS_PER_DAY; j++) {
                 if (engineerResting.size() > 0) {
-                    String engineerId = engineerResting.get(0);
-                    Engineer engineer = copyOfEngineers.get(engineerId);
-                    if (!engineers.contains(engineer) && !removedEngineers.contains(engineerId)) {
+                    Engineer engineer = engineerResting.get(0);
+                    if (!engineers.contains(engineer) && !removedEngineers.contains(engineer.getId())) {
                         engineers.add(engineer);
 
                     }
@@ -206,20 +229,16 @@ public class ScheduleService {
                 // Making sure that after takenShits >= totalShifts / MAX_SHIFTS_PER_DAY, find each engineer
                 // who dose not have any shift assigned already and then randomly select one.
                 if (takenShits >= totalShifts / MAX_SHIFTS_PER_DAY * ENGINEER_OFF_DAYS) {
-                    for (Engineer engineer : engineers) {
-                        int engTotalShifts = engineerTotalShifts.get(engineer.getId());
-                        if (engTotalShifts == 0) {
-                            possibleCandidates.add(engineer);
-                        }
-                    }
                     // find each engineer who dose not have 1 to MAX_SHIFTS_PER_DAY shifts assigned already and then randomly select one.
-                    for (int i = 1; i <= MAX_SHIFTS_PER_DAY; i++) {
+                    for (int i = 0; i < MAX_SHIFTS_PER_DAY; i++) {
                         if (possibleCandidates.size() == 0) {
-                            for (Engineer engineer : engineers) {
-                                int engTotalShifts = engineerTotalShifts.get(engineer.getId());
-                                if (engTotalShifts == i) {
-                                    possibleCandidates.add(engineer);
-                                }
+                            List<Engineer> engineers = shifts.get(i);
+                            if (engineers != null && engineers.size() > 0) {
+                                possibleCandidates.addAll(engineers);
+                            }
+                            for (Engineer engineer : this.engineerResting) {
+                                possibleCandidates.remove(engineer);
+
                             }
                         }
 

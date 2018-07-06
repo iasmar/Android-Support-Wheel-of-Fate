@@ -1,9 +1,11 @@
 package com.iasmar.rome.services;
 
 
+import com.iasmar.rome.configuration.Constant;
 import com.iasmar.rome.data.modules.Engineer;
 import com.iasmar.rome.data.modules.Schedule;
 import com.iasmar.rome.exception.ScheduleException;
+import com.iasmar.rome.util.GeneralUtils;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,10 +13,18 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import static com.iasmar.rome.configuration.Constant.ENGINEER_OFF_DAYS;
 import static com.iasmar.rome.configuration.Constant.MAX_SHIFTS_PER_DAY;
+import static com.iasmar.rome.configuration.Constant.SCHEDULE_PERIOD_DAYS;
 import static org.junit.Assert.*;
 
 public class ScheduleServiceTest {
@@ -35,13 +45,7 @@ public class ScheduleServiceTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    @Test
-    public void verifyGetSchedules_valid() {
-        List<Engineer> engineers = provideListOfEngineers();
-        ScheduleService scheduleService = newInstantOFScheduleService(engineers);
-        List<Schedule> schedules = scheduleService.getSchedules();
-        assertTrue(schedules.size() > 0);
-    }
+
 
     @Test
     public void verifyInstantWith_null() {
@@ -133,33 +137,46 @@ public class ScheduleServiceTest {
 
     }
 
+    public static List<Engineer> provideListOfEngineers() {
+        int id;
+        Map<String, Engineer> engineers = new LinkedHashMap<>();
+        for (int i = 0; i < SCHEDULE_PERIOD_DAYS; i++) {
+            do {
+                id = GeneralUtils.getRandomNumber(2147483645);
 
-    static List<Engineer> provideListOfEngineers() {
+            } while (engineers.containsKey("" + id));
 
-        List<Engineer> engineers = new ArrayList<>();
-        Engineer engineer = generateEngineer("0", "Bogdan", null);
-        engineers.add(engineer);
-        engineer = generateEngineer("1", "Nic", null);
-        engineers.add(engineer);
-        engineer = generateEngineer("2", "Tung", null);
-        engineers.add(engineer);
-        engineer = generateEngineer("3", "Gautam", null);
-        engineers.add(engineer);
-        engineer = generateEngineer("4", "Bala", null);
-        engineers.add(engineer);
-        engineer = generateEngineer("5", "Nazih", null);
-        engineers.add(engineer);
-        engineer = generateEngineer("6", "Huteri", null);
-        engineers.add(engineer);
-        engineer = generateEngineer("7", "Aldy", null);
-        engineers.add(engineer);
-        engineer = generateEngineer("8", "Ankur", null);
-        engineers.add(engineer);
-        engineer = generateEngineer("9", "Chinh", null);
-        engineers.add(engineer);
+            engineers.put("" + id, generateEngineer("" + id, "" + id, null));
 
-        return engineers;
+        }
+        return new ArrayList<>(engineers.values());
     }
+//    static List<Engineer> provideListOfEngineers() {
+//
+//        List<Engineer> engineers = new ArrayList<>();
+//        Engineer engineer = generateEngineer("0", "Bogdan", null);
+//        engineers.add(engineer);
+//        engineer = generateEngineer("1", "Nic", null);
+//        engineers.add(engineer);
+//        engineer = generateEngineer("2", "Tung", null);
+//        engineers.add(engineer);
+//        engineer = generateEngineer("3", "Gautam", null);
+//        engineers.add(engineer);
+//        engineer = generateEngineer("4", "Bala", null);
+//        engineers.add(engineer);
+//        engineer = generateEngineer("5", "Nazih", null);
+//        engineers.add(engineer);
+//        engineer = generateEngineer("6", "Huteri", null);
+//        engineers.add(engineer);
+//        engineer = generateEngineer("7", "Aldy", null);
+//        engineers.add(engineer);
+//        engineer = generateEngineer("8", "Ankur", null);
+//        engineers.add(engineer);
+//        engineer = generateEngineer("9", "Chinh", null);
+//        engineers.add(engineer);
+//
+//        return engineers;
+//    }
 
 
     private List<Engineer> provideEmptyListOfEngineers() {
