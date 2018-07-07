@@ -2,6 +2,9 @@
 
 This is an app that should repeat selecting two engineers at random to both complete a half day of support (shift) each to ultimately generate a schedule that shows whose turn is it to support the business.
 
+## Algorithm
+As we all know The nurse scheduling problem (NSP), also called the nurse rostering problem (NRP) and it is known to have NP-hard complexity.
+
 ## APK
 This apk with the build type (prod-debug)
  - Download [apk](https://drive.google.com/file/d/1wHfKtFmFc-RXDTg-bOAv8zGtYFKvC2A2/view?usp=sharing)
