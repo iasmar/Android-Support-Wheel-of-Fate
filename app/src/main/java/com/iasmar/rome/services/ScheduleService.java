@@ -236,10 +236,7 @@ public class ScheduleService {
                             if (engineers != null && engineers.size() > 0) {
                                 possibleCandidates.addAll(engineers);
                             }
-                            for (Engineer engineer : this.engineerResting) {
-                                possibleCandidates.remove(engineer);
-
-                            }
+                            possibleCandidates.removeAll(engineerResting);
                         }
 
                     }
